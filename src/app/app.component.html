@@ -1,0 +1,63 @@
+<nav class="navbar">
+  <div
+    class="container-sm p-3 px-0 font-avega-italic border-bottom border-black d-sm-block d-md-inline-flex text-center">
+    <h6>USUARIOS</h6>
+    <h6>DESARROLLO DE APLICACIONES WEB AVANZADO</h6>
+    <h6>GRUPO 02</h6>
+  </div>
+</nav>
+<div class="container-fluid pt-5">
+  <div class="row row-cols-1 row-cols-2 g-3">
+    <div class="col">
+      <form [formGroup]="form" (ngSubmit)="submit()"
+        class="form p-4 bg-blue-custom d-flex flex-column gap-3 justify-content-center align-content-center rounded-3 border border-3 border-dark shadow-sm mx-auto"
+        style="width: 310px;">
+        <div class="title font-avega-italic mb-2 bg-transparent">
+          <h4 class="m-0 bg-transparent">Bienvenido,</h4>
+          <span class="font-courier-prime fst-italic bg-transparent" style="font-size: small">Ingrese los
+            datos por favor</span>
+        </div>
+        <input class="input" placeholder="Cédula" type="number" formControlName="cedula">
+        <input class="input" placeholder="Apellido" type="text" formControlName="apellido">
+        <input class="input" placeholder="Nombre" type="text" formControlName="nombre">
+        <input class="input" type="date" formControlName="fechaNac">
+        <select class="input" formControlName="genero">
+          <option disabled selected>Selecciona género</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <option value="otro">Otro</option>
+        </select>
+        <hr class="my-1">
+        <button class="btn-custom w-100">
+          <span class="button_top">Calcular</span>
+        </button>
+      </form>
+    </div>
+    <div class="col">
+      <div class=" bg-white overflow-y-auto border border-2 border-black" style="height: 28rem; width: 90%;">
+        <table class="table table-hover table-striped border border-2 border-top-0 border-end-0 border-start-0 border-black">
+          <thead>
+            <tr>
+              <th>Cédula</th>
+              <th>Apellido</th>
+              <th>Nombres</th>
+              <th>Fecha Nac.</th>
+              <th>Género</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of usuarios; track $index) {
+              <tr>
+                <td> {{ item.cedula }} </td>
+                <td> {{ item.apellido }} </td>
+                <td> {{ item.nombre }} </td>
+                <td> {{ item.fechaNac }} </td>
+                <td> {{ item.genero }} </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
